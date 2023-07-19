@@ -1,14 +1,11 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'pierrpebay/vt-tv:latest'
+        }
+    }
 
     stages {
-        stage('GetOS') {
-            agent {
-                docker {
-                    image 'pierrpebay/vt-tv:latest'
-                }
-            }
-        }
         stage('Build') {
             steps {
                 echo 'Building..'
