@@ -12,8 +12,6 @@ pipeline {
                     sh '''#!/bin/bash
                         source /var/lib/jenkins/workspace/My-Pipeline_PR-3/spack/share/spack/setup-env.sh
                         export JENKINS_HOME=/var/lib/jenkins/workspace/My-Pipeline_PR-3
-                        export PATH="/usr/bin/python:$PATH"
-                        which python
                         spack env create trilinos-base
                         spack env activate trilinos-base
                         spack add git
@@ -30,7 +28,7 @@ pipeline {
                         mkdir -p "${Trilinos_MPI_BUILD_DIR}"
                         cd "${Trilinos_MPI_BUILD_DIR}"
 
-                        TRILINOS_SOURCE="/"${JENKINS_HOME}"/Trilinos"
+                        TRILINOS_SOURCE="/"${JENKINS_HOME}"/Trilinos-1/Trilinos"
 
                         cmake  \
                         -GNinja \
@@ -40,7 +38,7 @@ pipeline {
                         -D CMAKE_VERBOSE_MAKEFILE=OFF \
                         -D TPL_ENABLE_MPI=ON \
                         -D MPI_BIN_DIR="$(which mpirun)" \
-                        -D CMAKE_INSTALL_PREFIX=/"${JENKINS_HOME}"/Trilinos-install \
+                        -D CMAKE_INSTALL_PREFIX=/"${JENKINS_HOME}"/Trilinos-1/Trilinos-install \
                         -D MPI_EXEC_MAX_NUMPROCS=8 \
                         -D MPI_C_COMPILER:FILEPATH="$(which mpicc)" \
                         -D MPI_CXX_COMPILER:FILEPATH="$(which mpicxx)" \
@@ -66,7 +64,7 @@ pipeline {
 
                         ninja all -j4
                         ninja install
-                        cd "${JENKINS_HOME}"/Trilinos-build
+                        cd "${JENKINS_HOME}"/Trilinos-1/Trilinos-build
                         ctest -j8
                         '''
                     // githubNotify context: 'Jenkins: serial', description: 'OK',  status: 'SUCCESS'
