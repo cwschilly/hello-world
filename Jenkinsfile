@@ -7,10 +7,6 @@ pipeline {
                     echo 'Building...'
                     // install Python and Spack
                     sh '''
-                        git clone -c feature.manyFiles=true https://github.com/spack/spack.git
-                        . spack/share/spack/setup-env.sh
-                        spack env create trilinos-build
-                        spack env activate trilinos-build
                         spack env status
                        '''
                     // install other dependencies
