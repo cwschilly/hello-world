@@ -11,14 +11,14 @@ pipeline {
                         . spack/share/spack/setup-env.sh
                         spack env create trilinos-build
                         spack env activate trilinos-build
+                        spack env status
                        '''
                     // install other dependencies
-                    sh '''spack add git
-                        spack add cmake
-                        spack add ninja
-                        spack add openmpi
-                        spack add ccache
-                        spack install
+                    sh '''spack install git
+                        spack install cmake
+                        spack install ninja
+                        spack install openmpi
+                        spack install ccache
                         source /home/calebschilly/spack/share/spack/setup-env.sh
                        '''
                     // clone Trilinos
