@@ -10,7 +10,8 @@ pipeline {
                     echo 'Building...'
                     // install Python and Spack
                     sh '''
-                        apt install python3
+                        apt update
+                        apt install build-essential ca-certificates coreutils curl environment-modules gfortran git gpg lsb-release python3 python3-distutils python3-venv unzip zip
                         git clone -c feature.manyFiles=true https://github.com/spack/spack.git
                         . spack/share/spack/setup-env.sh
                         spack env create trilinos-build
