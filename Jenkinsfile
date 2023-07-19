@@ -6,10 +6,10 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
+        stage('Python') {
             steps {
-                echo 'Building..'
-                sh '''sudo apt-get install python3'''
+                sh '''python -c 'print("hello world")'
+                '''
         //         timeout(time: 5, unit: 'HOURS') {
         //             // install Python and Spack
         //             sh '''
