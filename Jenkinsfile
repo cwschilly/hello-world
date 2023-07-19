@@ -9,7 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh '''apt install python3'''
+                sh '''sudo apt install python3'''
         //         timeout(time: 5, unit: 'HOURS') {
         //             // install Python and Spack
         //             sh '''
