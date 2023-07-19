@@ -7,7 +7,6 @@ pipeline {
                     echo 'Building...'
                     // install Python and Spack
                     sh '''
-                        apt-get update
                         apt-get install build-essential ca-certificates coreutils curl environment-modules gfortran git gpg lsb-release python3 python3-distutils python3-venv unzip zip
                         git clone -c feature.manyFiles=true https://github.com/spack/spack.git
                         . spack/share/spack/setup-env.sh
