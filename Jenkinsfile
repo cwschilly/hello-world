@@ -9,7 +9,8 @@ pipeline {
             steps {
                 timeout(time: 5, unit: 'HOURS') {
                     echo 'Building...'
-                    sh '''which gcc
+                    sh '''#!/bin/bash
+                        which gcc
                         echo $PWD
                         printenv
                     '''
