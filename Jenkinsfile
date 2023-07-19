@@ -12,6 +12,7 @@ pipeline {
                     sh '''#!/bin/bash
                         source /var/lib/jenkins/workspace/My-Pipeline_PR-3/spack/share/spack/setup-env.sh
                         export JENKINS_HOME=/var/lib/jenkins/workspace/My-Pipeline_PR-3
+                        echo $PATH
                         which python
                         spack env create trilinos-base
                         spack env activate trilinos-base
