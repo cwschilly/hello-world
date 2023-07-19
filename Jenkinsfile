@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Python') {
             steps {
-                sh '''python -c 'print("hello world")'
+                sh '''python3 -c 'print("hello world")'
                 '''
         //         timeout(time: 5, unit: 'HOURS') {
         //             // install Python and Spack
