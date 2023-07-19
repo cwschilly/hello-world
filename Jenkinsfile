@@ -1,12 +1,26 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'ubuntu:20.04'
+        }
+    }
     stages {
         stage('Build') {
             steps {
                 timeout(time: 5, unit: 'HOURS') {
                     echo 'Building...'
                     // install Python and Spack
+                    // sh '''apt-get update
+                    //       apt-get install python3
+                    //    '''
+                    // sh '''
+                    //     git clone -c feature.manyFiles=true https://github.com/spack/spack.git
+                    //     . spack/share/spack/setup-env.sh
+                    //     spack env create trilinos-build
+                    //     spack env activate trilinos-build
+                    //    '''
                     sh '''
+                        source /home/calebschilly/spack/share/spack/setup-env.sh
                         spack env status
                        '''
                     // install other dependencies
@@ -15,7 +29,6 @@ pipeline {
                         spack install ninja
                         spack install openmpi
                         spack install ccache
-                        source /home/calebschilly/spack/share/spack/setup-env.sh
                        '''
                     // clone Trilinos
                     sh ''' git clone https://github.com/NexGenAnalytics/Trilinos.git
