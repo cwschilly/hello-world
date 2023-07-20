@@ -24,7 +24,7 @@ pipeline {
                         cd Trilinos-1
                         git clone https://github.com/NexGenAnalytics/Trilinos.git
 
-                        export Trilinos_MPI_BUILD_DIR=/"${JENKINS_HOME}"/Trilinos-build
+                        export Trilinos_MPI_BUILD_DIR=/"${JENKINS_HOME}"/Trilinos-1/Trilinos-build
                         mkdir -p "${Trilinos_MPI_BUILD_DIR}"
                         cd "${Trilinos_MPI_BUILD_DIR}"
 
