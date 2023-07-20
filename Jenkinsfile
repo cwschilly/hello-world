@@ -10,9 +10,9 @@ pipeline {
                 timeout(time: 5, unit: 'HOURS') {
                     echo 'Building...'
                     echo 'hello world 1'
-                    sh '''#!/bin/env python3
+                    sh '''#!/bin/env bash
                         echo 'Hello world 2'
-                    '''
+                       '''
                     echo 'hello world 3'
                     // sh '''#!/bin/bash
                     //     source /var/lib/jenkins/workspace/My-Pipeline_PR-3/spack/share/spack/setup-env.sh
