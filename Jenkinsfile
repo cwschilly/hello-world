@@ -5,11 +5,11 @@ pipeline {
             steps {
                 timeout(time: 5, unit: 'HOURS') {
                     echo 'Building...'
-                    echo 'hello world 1'
                     sh '''#!/bin/bash
-                        echo 'Hello world 2'
-                       '''
-                    echo 'hello world 3'
+                        python -c 'print("hello world from python")'
+                        python3 -c 'print("hello world from python3")'
+                        python3.10 -c 'print("hello world from python3.10")'
+                    '''
                     // sh '''#!/bin/bash
                     //     source /var/lib/jenkins/workspace/My-Pipeline_PR-3/spack/share/spack/setup-env.sh
                     //     export JENKINS_HOME=/var/lib/jenkins/workspace/My-Pipeline_PR-3
