@@ -18,7 +18,7 @@ pipeline {
                         cd spack
                         . spack/share/spack/setup-env.sh
                         export JENKINS_HOME="$PWD"
-                        export PATH="JENKINS_HOME/spack/bin:$PATH"
+                        export PATH="${JENKINS_HOME}/spack/bin:$PATH"
                         echo "Current PATH: $PATH"
                         spack env create trilinos-base
                         spack env activate trilinos-base
