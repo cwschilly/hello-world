@@ -1,16 +1,12 @@
 pipeline {
-    agent {
-        docker {
-            image 'python:3.11-alpine3.18'
-        }
-    }
+    agent any
     stages {
         stage('Build') {
             steps {
                 timeout(time: 5, unit: 'HOURS') {
                     echo 'Building...'
                     echo 'hello world 1'
-                    sh '''#!/bin/env bash
+                    sh '''#!/bin/bash
                         echo 'Hello world 2'
                        '''
                     echo 'hello world 3'
