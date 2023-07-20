@@ -14,9 +14,9 @@ pipeline {
                     checkout scm
                     echo 'Building...'
                     sh '''#!/bin/bash
-                         git clone -c feature.manyFiles=true https://github.com/spack/spack.git
-                       '''
-                    sh '''#!/bin/bash
+                        git clone -c feature.manyFiles=true https://github.com/spack/spack.git
+                        cd spack
+                        . spack/share/spack/setup-env.sh
                         export JENKINS_HOME=/var/lib/jenkins/workspace/My-Pipeline_PR-3
                         spack env create trilinos-base
                         spack env activate trilinos-base
