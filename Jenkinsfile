@@ -11,6 +11,7 @@ pipeline {
                     echo 'Building...'
                     sh '''#!/bin/bash
                         python -c 'print("Hello world 1")'
+                        python3 -c 'print("hello world with python3")'
                         python3.10 -c 'print("Hello world 2")'
                     '''
                     // sh '''#!/bin/bash
