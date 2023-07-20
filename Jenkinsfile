@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'ubuntu:22.04'
+            image 'python:3.11-alpine3.18'
         }
     }
     stages {
@@ -10,9 +10,9 @@ pipeline {
                 timeout(time: 5, unit: 'HOURS') {
                     echo 'Building...'
                     sh '''#!/bin/bash
-                        python -c 'print("Hello world 1")'
+                        python -c 'print("Hello world with python")'
                         python3 -c 'print("hello world with python3")'
-                        python3.10 -c 'print("Hello world 2")'
+                        python3.11 -c 'print("Hello world with python3.11")'
                     '''
                     // sh '''#!/bin/bash
                     //     source /var/lib/jenkins/workspace/My-Pipeline_PR-3/spack/share/spack/setup-env.sh
