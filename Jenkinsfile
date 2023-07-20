@@ -15,7 +15,6 @@ pipeline {
                     echo 'Building...'
                     sh '''#!/bin/bash
                         git clone -c feature.manyFiles=true https://github.com/spack/spack.git
-                        cd spack
                         . spack/share/spack/setup-env.sh
                         export JENKINS_HOME="$PWD"
                         export PATH="${JENKINS_HOME}/spack/bin:$PATH"
