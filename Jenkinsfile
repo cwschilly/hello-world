@@ -18,6 +18,7 @@ pipeline {
                         cd spack
                         . spack/share/spack/setup-env.sh
                         export JENKINS_HOME=/var/lib/jenkins/workspace/My-Pipeline_PR-3
+                        echo "Current PATH: $PATH"
                         spack env create trilinos-base
                         spack env activate trilinos-base
                         spack add git
