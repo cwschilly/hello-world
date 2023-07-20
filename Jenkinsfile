@@ -10,7 +10,7 @@ pipeline {
                 timeout(time: 5, unit: 'HOURS') {
                     echo 'Building...'
                     echo 'hello world 1'
-                    sh '''#!/bin/bash
+                    sh '''#!/bin/env python3
                         echo 'Hello world 2'
                     '''
                     echo 'hello world 3'
