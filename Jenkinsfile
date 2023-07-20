@@ -16,7 +16,7 @@ pipeline {
                     sh '''#!/bin/bash
                          git clone --depth=100 --branch=releases/v0.20 https://github.com/spack/spack.git
                          cd spack
-                         source /var/lib/jenkins/workspace/My-Pipeline_PR-3/spack/share/spack/setup-env.sh
+                         . share/spack/setup-env.sh
                        '''
                     sh '''#!/bin/bash
                         export JENKINS_HOME=/var/lib/jenkins/workspace/My-Pipeline_PR-3
