@@ -15,18 +15,17 @@ pipeline {
                     echo 'Building...'
                     sh '''#!/bin/bash
                          git clone -c feature.manyFiles=true https://github.com/spack/spack.git
-                         cd spack/bin
                        '''
                     sh '''#!/bin/bash
                         export JENKINS_HOME=/var/lib/jenkins/workspace/My-Pipeline_PR-3
-                        ./spack env create trilinos-base
-                        ./spack env activate trilinos-base
-                        ./spack add git
-                        ./spack add cmake
-                        ./spack add ninja
-                        ./spack add openmpi
-                        ./spack add ccache
-                        ./spack install
+                        spack env create trilinos-base
+                        spack env activate trilinos-base
+                        spack add git
+                        spack add cmake
+                        spack add ninja
+                        spack add openmpi
+                        spack add ccache
+                        spack install
                         mkdir -p "${JENKINS_HOME}"/Trilinos-1
                         cd Trilinos-1
                         git clone https://github.com/NexGenAnalytics/Trilinos.git
@@ -76,7 +75,7 @@ pipeline {
                         '''
                     // githubNotify context: 'Jenkins: serial', description: 'OK',  status: 'SUCCESS'
                 }
-          }
+            }
         }
         stage('Test') {
             steps {
