@@ -17,7 +17,7 @@ pipeline {
                         git clone -c feature.manyFiles=true https://github.com/spack/spack.git
                         cd spack
                         . spack/share/spack/setup-env.sh
-                        export JENKINS_HOME=/var/lib/jenkins/workspace/My-Pipeline_PR-3
+                        export JENKINS_HOME="$PWD"
                         export PATH="JENKINS_HOME/spack/bin:$PATH"
                         echo "Current PATH: $PATH"
                         spack env create trilinos-base
@@ -29,7 +29,7 @@ pipeline {
                         spack add ccache
                         spack install
                         mkdir -p "${JENKINS_HOME}"/Trilinos-1
-                        cd Trilinos-1
+                        cd "${JENKINS_HOME}"/Trilinos-1
                         git clone https://github.com/NexGenAnalytics/Trilinos.git
 
                         export Trilinos_MPI_BUILD_DIR=/"${JENKINS_HOME}"/Trilinos-1/Trilinos-build
