@@ -15,8 +15,7 @@ pipeline {
                     echo 'Building...'
                     sh '''#!/bin/bash
                         g++ --version
-                        clang++ --version
-                        icc --version
+                        which g++
                         git clone -c feature.manyFiles=true https://github.com/spack/spack.git
                         . spack/share/spack/setup-env.sh
                         export JENKINS_HOME="$PWD"
