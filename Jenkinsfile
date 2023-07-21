@@ -25,9 +25,10 @@ pipeline {
                         export JENKINS_HOME="$PWD"
                         export PATH="${JENKINS_HOME}/spack/bin:$PATH"
                         echo "Current PATH: $PATH"
-                        spack compilers
                         spack env create trilinos-base
                         spack env activate trilinos-base
+                        spack compiler find /usr/bin/g++
+                        spack compiler info gcc@=11.3.0
                         spack add git
                         spack add cmake
                         spack add ninja
