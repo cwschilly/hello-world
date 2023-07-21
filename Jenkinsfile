@@ -6,7 +6,7 @@ pipeline {
     }
     environment {
         // Set the C++ compiler (g++) explicitly for the pipeline
-        CXX = "$(which g++)"
+        CXX = "${which g++}"
     }
     stages {
         stage('Build') {
@@ -50,11 +50,11 @@ pipeline {
                         -D Trilinos_ENABLE_DEBUG=ON \
                         -D CMAKE_VERBOSE_MAKEFILE=OFF \
                         -D TPL_ENABLE_MPI=ON \
-                        -D MPI_BIN_DIR="$(which mpirun)" \
+                        -D MPI_BIN_DIR="${which mpirun}" \
                         -D CMAKE_INSTALL_PREFIX=/"${JENKINS_HOME}"/Trilinos-1/Trilinos-install \
                         -D MPI_EXEC_MAX_NUMPROCS=8 \
-                        -D MPI_C_COMPILER:FILEPATH="$(which mpicc)" \
-                        -D MPI_CXX_COMPILER:FILEPATH="$(which mpicxx)" \
+                        -D MPI_C_COMPILER:FILEPATH="${which mpicc}" \
+                        -D MPI_CXX_COMPILER:FILEPATH="${which mpicxx}" \
                         -D Trilinos_ENABLE_EXPLICIT_INSTANTIATION=ON \
                         -D Trilinos_ENABLE_ALL_OPTIONAL_PACKAGES=OFF \
                         -D Trilinos_ENABLE_TESTS=OFF \
