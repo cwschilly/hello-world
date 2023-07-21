@@ -27,7 +27,7 @@ pipeline {
                         echo "Current PATH: $PATH"
                         spack env create trilinos-base
                         spack env activate trilinos-base
-                        spack compiler find
+                        spack compiler remove gcc@12.1.0
                         spack compilers
                         spack add git
                         spack add cmake
