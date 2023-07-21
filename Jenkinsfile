@@ -14,8 +14,9 @@ pipeline {
                     checkout scm
                     echo 'Building...'
                     sh '''#!/bin/bash
-                        apt update
-                        apt install build-essential ca-certificates coreutils curl environment-modules gfortran git gpg lsb-release python3 python3-distutils python3-venv unzip zip
+                        g++ --version
+                        clang++ --version
+                        icc --version
                         git clone -c feature.manyFiles=true https://github.com/spack/spack.git
                         . spack/share/spack/setup-env.sh
                         export JENKINS_HOME="$PWD"
