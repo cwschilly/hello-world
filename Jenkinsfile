@@ -14,6 +14,8 @@ pipeline {
                     checkout scm
                     echo 'Building...'
                     sh '''#!/bin/bash
+                        apt-get update
+                        apt-get install build-essential
                         git clone -c feature.manyFiles=true https://github.com/spack/spack.git
                         . spack/share/spack/setup-env.sh
                         export JENKINS_HOME="$PWD"
