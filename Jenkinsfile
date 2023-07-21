@@ -25,6 +25,7 @@ pipeline {
                         export JENKINS_HOME="$PWD"
                         export PATH="${JENKINS_HOME}/spack/bin:$PATH"
                         echo "Current PATH: $PATH"
+                        spack compilers
                         spack env create trilinos-base
                         spack env activate trilinos-base
                         spack add git
