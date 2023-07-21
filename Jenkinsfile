@@ -27,8 +27,8 @@ pipeline {
                         echo "Current PATH: $PATH"
                         spack env create trilinos-base
                         spack env activate trilinos-base
-                        spack compiler find /usr/bin/g++
-                        spack compiler info g++@=11.3.0
+                        spack compiler find
+                        spack compilers
                         spack add git
                         spack add cmake
                         spack add ninja
