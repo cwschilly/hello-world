@@ -4,6 +4,10 @@ pipeline {
         // This is required if you want to clean before build
         skipDefaultCheckout(true)
     }
+    environment {
+        // Set the C++ compiler (g++) explicitly for the pipeline
+        CXX = "$(which g++)"
+    }
     stages {
         stage('Build') {
             steps {
@@ -12,10 +16,10 @@ pipeline {
                     cleanWs()
                     // We need to explicitly checkout from SCM here
                     checkout scm
+                    // Begin build
                     echo 'Building...'
                     sh '''#!/bin/bash
                         g++ --version
-                        which g++
                         git clone -c feature.manyFiles=true https://github.com/spack/spack.git
                         . spack/share/spack/setup-env.sh
                         export JENKINS_HOME="$PWD"
