@@ -1,13 +1,17 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'pierrpebay/nga-trilinos-base'
+        }
+    }
     options {
         // This is required if you want to clean before build
         skipDefaultCheckout(true)
     }
-    environment {
-        // Set the C++ compiler (g++) explicitly for the pipeline
-        CXX = "/usr/bin/g++"
-    }
+    // environment {
+    //     // Set the C++ compiler (g++) explicitly for the pipeline
+    //     CXX = "/usr/bin/g++"
+    // }
     stages {
         stage('Build') {
             steps {
@@ -18,23 +22,25 @@ pipeline {
                     checkout scm
                     // Begin build
                     echo 'Building...'
-                    sh '''#!/bin/bash
-                        g++ --version
-                        git clone -c feature.manyFiles=true https://github.com/spack/spack.git
-                        . spack/share/spack/setup-env.sh
-                        export JENKINS_HOME="$PWD"
-                        export PATH="${JENKINS_HOME}/spack/bin:$PATH"
-                        echo "Current PATH: $PATH"
-                        spack env create trilinos-base
-                        spack env activate trilinos-base
-                        spack compiler remove gcc@12.1.0
-                        spack compilers
-                        spack add git
-                        spack add cmake
-                        spack add ninja
-                        spack add openmpi
-                        spack add ccache
-                        spack install
+                    // sh '''#!/bin/bash
+                    //     g++ --version
+                    //     git clone -c feature.manyFiles=true https://github.com/spack/spack.git
+                    //     . spack/share/spack/setup-env.sh
+                    //     export JENKINS_HOME="$PWD"
+                    //     export PATH="${JENKINS_HOME}/spack/bin:$PATH"
+                    //     echo "Current PATH: $PATH"
+                    //     spack env create trilinos-base
+                    //     spack env activate trilinos-base
+                    //     spack compiler remove gcc@12.1.0
+                    //     spack compilers
+                    //     spack add git
+                    //     spack add cmake
+                    //     spack add ninja
+                    //     spack add openmpi
+                    //     spack add ccache
+                    //     spack install
+                    //     '''
+                    sh '''
                         mkdir -p "${JENKINS_HOME}"/Trilinos-1
                         cd "${JENKINS_HOME}"/Trilinos-1
                         git clone -b 27-Zoltan2-VectorAdapter-refactor-API https://github.com/NexGenAnalytics/Trilinos.git
