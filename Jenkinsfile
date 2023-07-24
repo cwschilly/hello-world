@@ -41,6 +41,9 @@ pipeline {
                     //     spack install
                     //     '''
                     sh '''
+                        echo $PWD
+                        printenv
+                        whoami
                         export JENKINS_HOME="$PWD"
                         mkdir -p "${JENKINS_HOME}"/Trilinos-1
                         cd "${JENKINS_HOME}"/Trilinos-1
