@@ -41,9 +41,9 @@ pipeline {
                     //     spack install
                     //     '''
                     sh '''
-                        cd $WORKSPACE
+                        cd /home/calebschilly/Develop/Jenkins
                         printenv
-                        export JENKINS_HOME="$WORKSPACE"
+                        export JENKINS_HOME="/home/calebschilly/Develop/Jenkins"
                         mkdir -p "${JENKINS_HOME}"/Trilinos-1
                         cd "${JENKINS_HOME}"/Trilinos-1
                         git clone -b 27-Zoltan2-VectorAdapter-refactor-API https://github.com/NexGenAnalytics/Trilinos.git
